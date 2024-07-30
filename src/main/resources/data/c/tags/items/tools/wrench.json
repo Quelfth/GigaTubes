@@ -1,0 +1,9 @@
+{
+    "replace": false,
+    "values": [
+        "gigatubes:beta_wrench",
+        "gigatubes:kilo_wrench",
+        "gigatubes:mega_wrench",
+        "gigatubes:giga_wrench"
+    ]
+}

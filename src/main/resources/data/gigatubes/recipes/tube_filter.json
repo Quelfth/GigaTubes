@@ -1,0 +1,14 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "category": "misc",
+    "pattern": [
+        " . ",
+        ".#.",
+        " . "
+    ],
+    "key": { 
+        ".": { "item": "gigatubes:beta_particle" },
+        "#": { "item": "minecraft:nether_quartz" }
+    },
+    "result": { "item": "gigatubes:tube_filter", "count": 4 }
+}

@@ -1,0 +1,8 @@
+{
+    "wrench_sound": {
+        "subtitle": "sounds.gigatubes.wrench_sound",
+        "sounds": [
+            "gigatubes:wrench_sound"
+        ]
+    }
+}

@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "category": "misc",
+    "pattern": [
+        "~#~"
+    ],
+    "key": { 
+        "~": { "item": "gigatubes:megachadmium_nugget" },
+        "#": { "tag": "forge:glass" }
+    },
+    "result": { "item": "gigatubes:megatube", "count": 32 }
+}

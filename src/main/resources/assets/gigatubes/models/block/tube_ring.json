@@ -1,0 +1,41 @@
+{
+    "parent": "minecraft:block/block",
+    "elements": [
+        {
+            "from": [4, 0, 4], "to": [12, 2, 12],
+            "faces": {
+                "north": { "texture": "#main" },
+                "south": { "texture": "#main" },
+                "east": { "texture": "#main" },
+                "west": { "texture": "#main" },
+
+                "up": { "texture": "#main" },
+                "down": { "texture": "#bottom" }
+            }
+        },
+        {
+            "from": [5, 0, 4], "to": [11, 2, 5],
+            "faces": {
+                "south": { "texture": "#main", "uv": [11, 14, 5, 16]}
+            }
+        },
+        {
+            "from": [5, 0, 11], "to": [11, 2, 12],
+            "faces": {
+                "north": { "texture": "#main", "uv": [11, 14, 5, 16]}
+            }
+        },
+        {
+            "from": [4, 0, 5], "to": [5, 2, 11],
+            "faces": {
+                "east": { "texture": "#main", "uv": [11, 14, 5, 16]}
+            }
+        },
+        {
+            "from": [11, 0, 5], "to": [12, 2, 11],
+            "faces": {
+                "west": { "texture": "#main", "uv": [11, 14, 5, 16]}
+            }
+        }
+    ]
+}

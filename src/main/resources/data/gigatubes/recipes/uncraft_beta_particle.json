@@ -1,0 +1,11 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "category": "misc",
+    "pattern": [
+        "###",
+        "###",
+        "###"
+    ],
+    "key": { "#": { "item": "gigatubes:beta_particle" } },
+    "result": { "item": "gigatubes:chadmium_nugget" }
+}

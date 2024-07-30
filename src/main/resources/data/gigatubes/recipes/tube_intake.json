@@ -1,0 +1,14 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "category": "misc",
+    "pattern": [
+        "#@ ",
+        " #@",
+        "#@ "
+    ],
+    "key": { 
+        "#": { "item": "gigatubes:chadmium_ingot" },
+        "@": { "item": "minecraft:copper_ingot" }
+    },
+    "result": { "item": "gigatubes:tube_intake" }
+}

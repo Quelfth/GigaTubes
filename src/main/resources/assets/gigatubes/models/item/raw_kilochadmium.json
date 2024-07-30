@@ -1,0 +1,6 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "gigatubes:item/raw_kilochadmium"
+    }
+}

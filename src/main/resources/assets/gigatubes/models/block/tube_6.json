@@ -1,0 +1,78 @@
+{
+    "parent": "minecraft:block/block",
+    "elements": [
+        {
+            "from": [ 0, 5, 5 ],
+            "to": [ 5, 11, 11 ],
+            "faces": {
+                "south": { "texture": "#inside" },
+                "north": { "texture": "#inside" },
+                "up": { "texture": "#inside" },
+                "down": { "texture": "#inside" },
+
+                "west": { "texture": "#end", "cullface": "west" }
+            }
+        },
+        {
+            "from": [ 11, 5, 5 ],
+            "to": [ 16, 11, 11],
+            "faces": {
+                "north": { "texture": "#inside" },
+                "south": { "texture": "#inside" },
+                "up": { "texture": "#inside" },
+                "down": { "texture": "#inside" },
+
+                "east": { "texture": "#end", "cullface": "east" }
+            }
+        },
+        {
+            "from": [ 5, 11, 5 ],
+            "to": [ 11, 16, 11 ],
+            "faces": {
+                "north": { "texture": "#inside" },
+                "south": { "texture": "#inside" },
+                "east": { "texture": "#inside" },
+                "west": { "texture": "#inside" },
+
+                "up": { "texture": "#end", "cullface": "up" }
+            }
+        },
+        {
+            "from": [ 5, 0, 5 ],
+            "to": [ 11, 5, 11 ],
+            "faces": {
+                "north": { "texture": "#inside" },
+                "south": { "texture": "#inside" },
+                "east": { "texture": "#inside" },
+                "west": { "texture": "#inside" },
+
+                "down": { "texture": "#end", "cullface": "down" }
+            }
+        },
+        {
+            "from": [ 5, 5, 0 ],
+            "to": [ 11, 11, 5 ],
+            "faces": {
+                "up": { "texture": "#inside" },
+                "down": { "texture": "#inside" },
+                "east": { "texture": "#inside" },
+                "west": { "texture": "#inside" },
+
+                "north": { "texture": "#end", "cullface": "north" }
+            }
+        },
+        {
+            "from": [ 5, 5, 11 ],
+            "to": [ 11, 11, 16 ],
+            "faces": {
+                "up": { "texture": "#inside" },
+                "down": { "texture": "#inside" },
+                "east": { "texture": "#inside" },
+                "west": { "texture": "#inside" },
+
+                "south": { "texture": "#end", "cullface": "south" }
+            }
+        }
+        
+    ]
+}

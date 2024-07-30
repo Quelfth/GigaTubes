@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "category": "misc",
+    "pattern": [
+        "CPC",
+        "N N",
+        "COC"
+    ],
+    "key": {
+        "C": { "item": "gigatubes:chadmium_ingot" },
+        "P": { "item": "minecraft:piston" },
+        "N": { "item": "minecraft:netherite_ingot" },
+        "O": { "item": "minecraft:obsidian" }
+    },
+    "result": { "item": "gigatubes:chadmium_compressor" }
+}

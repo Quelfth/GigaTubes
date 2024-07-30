@@ -1,0 +1,11 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "category": "misc",
+    "pattern": [
+        "###",
+        "###",
+        "###"
+    ],
+    "key": { "#": { "item": "gigatubes:kilochadmium_nugget" } },
+    "result": { "item": "gigatubes:kilochadmium_ingot" }
+}

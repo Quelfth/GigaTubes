@@ -1,0 +1,290 @@
+{
+    "multipart": [
+
+        { 
+            "when": { "north": "false", "east": "false", "south": "false", "west": "false", "up": "false", "down": "false" }, 
+            "apply": { "model": "gigatubes:block/kilotube_0" }
+        },
+
+
+
+        { 
+            "when": { "north": "true", "east": "false", "south": "false", "west": "false", "up": "false", "down": "false" }, 
+            "apply": { "model": "gigatubes:block/kilotube_1" }
+        },
+        {   
+            "when": { "north": "false", "east": "true", "south": "false", "west": "false", "up": "false", "down": "false" }, 
+            "apply": { "model": "gigatubes:block/kilotube_1", "y": 90 }  
+        },
+        {   
+            "when": { "north": "false", "east": "false", "south": "true", "west": "false", "up": "false", "down": "false" }, 
+            "apply": { "model": "gigatubes:block/kilotube_1", "y": 180 }  
+        },
+        {   
+            "when": { "north": "false", "east": "false", "south": "false", "west": "true", "up": "false", "down": "false" }, 
+            "apply": { "model": "gigatubes:block/kilotube_1", "y": 270 }  
+        },
+        {   
+            "when": { "north": "false", "east": "false", "south": "false", "west": "false", "up": "true", "down": "false" }, 
+            "apply": { "model": "gigatubes:block/kilotube_1", "x": 270 }  
+        },
+        {   
+            "when": { "north": "false", "east": "false", "south": "false", "west": "false", "up": "false", "down": "true" }, 
+            "apply": { "model": "gigatubes:block/kilotube_1", "x": 90 }  
+        },
+        
+
+
+
+        { 
+            "when": { "north": "true", "east": "false", "south": "true", "west": "false", "up": "false", "down": "false" }, 
+            "apply": { "model": "gigatubes:block/kilotube_i" }
+        },
+        { 
+            "when": { "north": "false", "east": "true", "south": "false", "west": "true", "up": "false", "down": "false" }, 
+            "apply": { "model": "gigatubes:block/kilotube_i", "y": 90 }  
+        },
+        { 
+            "when": { "north": "false", "east": "false", "south": "false", "west": "false", "up": "true", "down": "true" }, 
+            "apply": { "model": "gigatubes:block/kilotube_i", "x": 90 }   
+        },
+        
+        
+
+
+        {   
+            "when": { "north": "true", "east": "false", "south": "false", "west": "false", "up": "true", "down": "false" }, 
+            "apply": { "model": "gigatubes:block/kilotube_l", "y": 270 }
+        },
+        {   
+            "when": { "north": "false", "east": "true", "south": "false", "west": "false", "up": "true", "down": "false" }, 
+            "apply": { "model": "gigatubes:block/kilotube_l" }
+        },
+        {   
+            "when": { "north": "false", "east": "false", "south": "true", "west": "false", "up": "true", "down": "false" }, 
+            "apply": { "model": "gigatubes:block/kilotube_l", "y": 90 }
+        },
+        {   
+            "when": { "north": "false", "east": "false", "south": "false", "west": "true", "up": "true", "down": "false" }, 
+            "apply": { "model": "gigatubes:block/kilotube_l", "y": 180 }
+        },
+        {   
+            "when": { "north": "true", "east": "false", "south": "false", "west": "false", "up": "false", "down": "true" }, 
+            "apply": { "model": "gigatubes:block/kilotube_l", "x": 180, "y": 270 }
+        },
+        {   
+            "when": { "north": "false", "east": "true", "south": "false", "west": "false", "up": "false", "down": "true" }, 
+            "apply": { "model": "gigatubes:block/kilotube_l", "x": 180 }
+        },
+        {   
+            "when": { "north": "false", "east": "false", "south": "true", "west": "false", "up": "false", "down": "true" }, 
+            "apply": { "model": "gigatubes:block/kilotube_l", "x": 180, "y": 90 }
+        },
+        {   
+            "when": { "north": "false", "east": "false", "south": "false", "west": "true", "up": "false", "down": "true" }, 
+            "apply": { "model": "gigatubes:block/kilotube_l", "x": 180, "y": 180 }
+        },
+        {   
+            "when": { "north": "true", "east": "true", "south": "false", "west": "false", "up": "false", "down": "false" }, 
+            "apply": { "model": "gigatubes:block/kilotube_l", "x": 270, "y": 270 }
+        },
+        {   
+            "when": { "north": "false", "east": "true", "south": "true", "west": "false", "up": "false", "down": "false" }, 
+            "apply": { "model": "gigatubes:block/kilotube_l", "x": 270 }
+        },
+        {   
+            "when": { "north": "false", "east": "false", "south": "true", "west": "true", "up": "false", "down": "false" }, 
+            "apply": { "model": "gigatubes:block/kilotube_l", "x": 270, "y": 90 }
+        },
+        {   
+            "when": { "north": "true", "east": "false", "south": "false", "west": "true", "up": "false", "down": "false" }, 
+            "apply": { "model": "gigatubes:block/kilotube_l", "x": 270, "y": 180 }
+        },
+
+
+
+        { 
+            "when": { "north": "true", "east": "true", "south": "false", "west": "false", "up": "true", "down": "false" }, 
+            "apply": { "model": "gigatubes:block/kilotube_y" }
+        },
+        { 
+            "when": { "north": "false", "east": "true", "south": "true", "west": "false", "up": "true", "down": "false" }, 
+            "apply": { "model": "gigatubes:block/kilotube_y", "y": 90 }
+        },
+        { 
+            "when": { "north": "false", "east": "false", "south": "true", "west": "true", "up": "true", "down": "false" }, 
+            "apply": { "model": "gigatubes:block/kilotube_y", "y": 180 }
+        },
+        { 
+            "when": { "north": "true", "east": "false", "south": "false", "west": "true", "up": "true", "down": "false" }, 
+            "apply": { "model": "gigatubes:block/kilotube_y", "y": 270 }
+        },
+        { 
+            "when": { "north": "true", "east": "true", "south": "false", "west": "false", "up": "false", "down": "true" }, 
+            "apply": { "model": "gigatubes:block/kilotube_y", "x": 180, "y": 270 }
+        },
+        { 
+            "when": { "north": "false", "east": "true", "south": "true", "west": "false", "up": "false", "down": "true" }, 
+            "apply": { "model": "gigatubes:block/kilotube_y", "x": 180 }
+        },
+        { 
+            "when": { "north": "false", "east": "false", "south": "true", "west": "true", "up": "false", "down": "true" }, 
+            "apply": { "model": "gigatubes:block/kilotube_y", "x": 180, "y": 90 }
+        },
+        { 
+            "when": { "north": "true", "east": "false", "south": "false", "west": "true", "up": "false", "down": "true" }, 
+            "apply": { "model": "gigatubes:block/kilotube_y", "x": 180, "y": 180 }
+        },
+
+
+
+
+
+        { 
+            "when": { "north": "true", "east": "false", "south": "false", "west": "false", "up": "true", "down": "true" }, 
+            "apply": { "model": "gigatubes:block/kilotube_t_vertical" }
+        },
+        { 
+            "when": { "north": "false", "east": "true", "south": "false", "west": "false", "up": "true", "down": "true" }, 
+            "apply": { "model": "gigatubes:block/kilotube_t_vertical", "y": 90 }   
+        },
+        { 
+            "when": { "north": "false", "east": "false", "south": "true", "west": "false", "up": "true", "down": "true" }, 
+            "apply": { "model": "gigatubes:block/kilotube_t_vertical", "y": 180 }   
+        },
+        { 
+            "when": { "north": "false", "east": "false", "south": "false", "west": "true", "up": "true", "down": "true" }, 
+            "apply": { "model": "gigatubes:block/kilotube_t_vertical", "y": 270 }   
+        },
+        { 
+            "when": { "north": "true", "east": "false", "south": "true", "west": "false", "up": "true", "down": "false" }, 
+            "apply": { "model": "gigatubes:block/kilotube_t_vertical", "x": 270 }   
+        },
+        { 
+            "when": { "north": "true", "east": "false", "south": "true", "west": "false", "up": "false", "down": "true" }, 
+            "apply": { "model": "gigatubes:block/kilotube_t_vertical", "x": 90 }   
+        },
+
+        {   
+            "when": { "north": "true", "east": "true", "south": "false", "west": "true", "up": "false", "down": "false" }, 
+            "apply": { "model": "gigatubes:block/kilotube_t_horizontal" }
+        },
+        { 
+            "when": { "north": "true", "east": "true", "south": "true", "west": "false", "up": "false", "down": "false" }, 
+            "apply": { "model": "gigatubes:block/kilotube_t_horizontal", "y": 90 }   
+        },
+        { 
+            "when": { "north": "false", "east": "true", "south": "true", "west": "true", "up": "false", "down": "false" }, 
+            "apply": { "model": "gigatubes:block/kilotube_t_horizontal", "y": 180 }   
+        },
+        { 
+            "when": { "north": "true", "east": "false", "south": "true", "west": "true", "up": "false", "down": "false" }, 
+            "apply": { "model": "gigatubes:block/kilotube_t_horizontal", "y": 270 }   
+        },
+        { 
+            "when": { "north": "false", "east": "true", "south": "false", "west": "true", "up": "true", "down": "false" }, 
+            "apply": { "model": "gigatubes:block/kilotube_t_horizontal", "x": 270 }   
+        },
+        { 
+            "when": { "north": "false", "east": "true", "south": "false", "west": "true", "up": "false", "down": "true" }, 
+            "apply": { "model": "gigatubes:block/kilotube_t_horizontal", "x": 90 }   
+        },
+
+        
+
+
+        { 
+            "when": { "north": "false", "east": "true", "south": "false", "west": "true", "up": "true", "down": "true" }, 
+            "apply": { "model": "gigatubes:block/kilotube_x" }
+        },
+        { 
+            "when": { "north": "true", "east": "true", "south": "true", "west": "true", "up": "false", "down": "false" }, 
+            "apply": { "model": "gigatubes:block/kilotube_x", "x": 90 }
+        },
+        { 
+            "when": { "north": "true", "east": "false", "south": "true", "west": "false", "up": "true", "down": "true" }, 
+            "apply": { "model": "gigatubes:block/kilotube_x", "y": 90 }
+        },
+
+
+
+        { 
+            "when": { "north": "true", "east": "true", "south": "false", "west": "true", "up": "true", "down": "false" }, 
+            "apply": { "model": "gigatubes:block/kilotube_k", "y": 270 }
+        },
+        { 
+            "when": { "north": "true", "east": "true", "south": "true", "west": "false", "up": "true", "down": "false" }, 
+            "apply": { "model": "gigatubes:block/kilotube_k" }
+        },
+        { 
+            "when": { "north": "false", "east": "true", "south": "true", "west": "true", "up": "true", "down": "false" }, 
+            "apply": { "model": "gigatubes:block/kilotube_k", "y": 90 }
+        },
+        { 
+            "when": { "north": "true", "east": "false", "south": "true", "west": "true", "up": "true", "down": "false" }, 
+            "apply": { "model": "gigatubes:block/kilotube_k", "y": 180 }
+        },
+        { 
+            "when": { "north": "true", "east": "true", "south": "false", "west": "true", "up": "false", "down": "true" }, 
+            "apply": { "model": "gigatubes:block/kilotube_k", "x": 180, "y": 270 }
+        },
+        { 
+            "when": { "north": "true", "east": "true", "south": "true", "west": "false", "up": "false", "down": "true" }, 
+            "apply": { "model": "gigatubes:block/kilotube_k", "x": 180 }
+        },
+        { 
+            "when": { "north": "false", "east": "true", "south": "true", "west": "true", "up": "false", "down": "true" }, 
+            "apply": { "model": "gigatubes:block/kilotube_k", "x": 180, "y": 90 }
+        },
+        { 
+            "when": { "north": "true", "east": "false", "south": "true", "west": "true", "up": "false", "down": "true" }, 
+            "apply": { "model": "gigatubes:block/kilotube_k", "x": 180, "y": 180 }
+        },
+        { 
+            "when": { "north": "true", "east": "true", "south": "false", "west": "false", "up": "true", "down": "true" }, 
+            "apply": { "model": "gigatubes:block/kilotube_k", "x": 270, "y": 270 }
+        },
+        { 
+            "when": { "north": "false", "east": "true", "south": "true", "west": "false", "up": "true", "down": "true" }, 
+            "apply": { "model": "gigatubes:block/kilotube_k", "x": 270 }
+        },
+        { 
+            "when": { "north": "false", "east": "false", "south": "true", "west": "true", "up": "true", "down": "true" }, 
+            "apply": { "model": "gigatubes:block/kilotube_k", "x": 270, "y": 90 }
+        },
+        { 
+            "when": { "north": "true", "east": "false", "south": "false", "west": "true", "up": "true", "down": "true" }, 
+            "apply": { "model": "gigatubes:block/kilotube_k", "x": 270, "y": 180 }
+        },
+
+        { 
+            "when": { "north": "true", "east": "true", "south": "false", "west": "true", "up": "true", "down": "true" }, 
+            "apply": { "model": "gigatubes:block/kilotube_5" }
+        },
+        { 
+            "when": { "north": "true", "east": "true", "south": "true", "west": "false", "up": "true", "down": "true" }, 
+            "apply": { "model": "gigatubes:block/kilotube_5", "y": 90 }   
+        },
+        { 
+            "when": { "north": "false", "east": "true", "south": "true", "west": "true", "up": "true", "down": "true" }, 
+            "apply": { "model": "gigatubes:block/kilotube_5", "y": 180 }   
+        },
+        { 
+            "when": { "north": "true", "east": "false", "south": "true", "west": "true", "up": "true", "down": "true" }, 
+            "apply": { "model": "gigatubes:block/kilotube_5", "y": 270 }   
+        },
+        { 
+            "when": { "north": "true", "east": "true", "south": "true", "west": "true", "up": "true", "down": "false" }, 
+            "apply": { "model": "gigatubes:block/kilotube_5", "x": 270 }  
+        },
+        { 
+            "when": { "north": "true", "east": "true", "south": "true", "west": "true", "up": "false", "down": "true" }, 
+            "apply": { "model": "gigatubes:block/kilotube_5", "x": 90 }   
+        },
+
+        { 
+            "when": { "north": "true", "east": "true", "south": "true", "west": "true", "up": "true", "down": "true" }, 
+            "apply": { "model": "gigatubes:block/kilotube_6" }
+        }
+    ]
+}

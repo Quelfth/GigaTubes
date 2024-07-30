@@ -1,0 +1,7 @@
+{
+    "parent": "gigatubes:item/tube_ring",
+    "textures": {
+        "main": "gigatubes:block/tube_output",
+        "bottom": "gigatubes:block/tube_output_bottom"
+    }
+}

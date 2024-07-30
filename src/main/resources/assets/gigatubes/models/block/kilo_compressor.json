@@ -1,0 +1,8 @@
+{
+    "parent": "minecraft:block/orientable",
+    "textures": {
+        "front": "gigatubes:block/kilo_compressor_front",
+        "side": "gigatubes:block/kilo_compressor_side",
+        "top": "gigatubes:block/kilo_compressor_side"
+    }
+}

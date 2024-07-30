@@ -1,0 +1,19 @@
+{
+    "variants": {
+        "facing=north": {
+            "model": "gigatubes:block/chadmium_compressor"
+        },
+        "facing=east": {
+            "model": "gigatubes:block/chadmium_compressor",
+            "y": 90
+        },
+        "facing=south": {
+            "model": "gigatubes:block/chadmium_compressor",
+            "y": 180
+        },
+        "facing=west": {
+            "model": "gigatubes:block/chadmium_compressor",
+            "y": 270
+        }
+    }
+}

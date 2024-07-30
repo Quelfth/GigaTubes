@@ -1,0 +1,150 @@
+{
+    "type": "minecraft:block",
+    "pools": [
+        {
+            "rolls": 1.0,
+            "bonus_rolls": 0.0,
+            "entries": [
+                {
+                    "type": "minecraft:item", "name": "gigatubes:tube_intake",
+                    "functions": [
+                        { "function": "minecraft:set_count", "count": 0.0 },
+                        { 
+                            "conditions": [
+                                {
+                                    "condition": "minecraft:block_state_property",
+                                    "block": "gigatubes:tube_io",
+                                    "properties": { "up_in": "true" }
+                                }
+                            ],
+                            "function": "minecraft:set_count", "add": true, "count": 1.0
+                        },
+                        { 
+                            "conditions": [
+                                {
+                                    "condition": "minecraft:block_state_property",
+                                    "block": "gigatubes:tube_io",
+                                    "properties": { "down_in": "true" }
+                                }
+                            ],
+                            "function": "minecraft:set_count", "add": true, "count": 1.0
+                        },
+                        { 
+                            "conditions": [
+                                {
+                                    "condition": "minecraft:block_state_property",
+                                    "block": "gigatubes:tube_io",
+                                    "properties": { "north_in": "true" }
+                                }
+                            ],
+                            "function": "minecraft:set_count", "add": true, "count": 1.0
+                        },
+                        { 
+                            "conditions": [
+                                {
+                                    "condition": "minecraft:block_state_property",
+                                    "block": "gigatubes:tube_io",
+                                    "properties": { "south_in": "true" }
+                                }
+                            ],
+                            "function": "minecraft:set_count", "add": true, "count": 1.0
+                        },
+                        { 
+                            "conditions": [
+                                {
+                                    "condition": "minecraft:block_state_property",
+                                    "block": "gigatubes:tube_io",
+                                    "properties": { "east_in": "true" }
+                                }
+                            ],
+                            "function": "minecraft:set_count", "add": true, "count": 1.0
+                        },
+                        { 
+                            "conditions": [
+                                {
+                                    "condition": "minecraft:block_state_property",
+                                    "block": "gigatubes:tube_io",
+                                    "properties": { "west_in": "true" }
+                                }
+                            ],
+                            "function": "minecraft:set_count", "add": true, "count": 1.0
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "rolls": 1.0,
+            "bonus_rolls": 0.0,
+            "entries": [
+                {
+                    "type": "minecraft:item", "name": "gigatubes:tube_output",
+                    "functions": [
+                        { "function": "minecraft:set_count", "count": 0.0 },
+                        { 
+                            "conditions": [
+                                {
+                                    "condition": "minecraft:block_state_property",
+                                    "block": "gigatubes:tube_io",
+                                    "properties": { "up_out": "true" }
+                                }
+                            ],
+                            "function": "minecraft:set_count", "add": true, "count": 1.0
+                        },
+                        { 
+                            "conditions": [
+                                {
+                                    "condition": "minecraft:block_state_property",
+                                    "block": "gigatubes:tube_io",
+                                    "properties": { "down_out": "true" }
+                                }
+                            ],
+                            "function": "minecraft:set_count", "add": true, "count": 1.0
+                        },
+                        { 
+                            "conditions": [
+                                {
+                                    "condition": "minecraft:block_state_property",
+                                    "block": "gigatubes:tube_io",
+                                    "properties": { "north_out": "true" }
+                                }
+                            ],
+                            "function": "minecraft:set_count", "add": true, "count": 1.0
+                        },
+                        { 
+                            "conditions": [
+                                {
+                                    "condition": "minecraft:block_state_property",
+                                    "block": "gigatubes:tube_io",
+                                    "properties": { "south_out": "true" }
+                                }
+                            ],
+                            "function": "minecraft:set_count", "add": true, "count": 1.0
+                        },
+                        { 
+                            "conditions": [
+                                {
+                                    "condition": "minecraft:block_state_property",
+                                    "block": "gigatubes:tube_io",
+                                    "properties": { "east_out": "true" }
+                                }
+                            ],
+                            "function": "minecraft:set_count", "add": true, "count": 1.0
+                        },
+                        { 
+                            "conditions": [
+                                {
+                                    "condition": "minecraft:block_state_property",
+                                    "block": "gigatubes:tube_io",
+                                    "properties": { "west_out": "true" }
+                                }
+                            ],
+                            "function": "minecraft:set_count", "add": true, "count": 1.0
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "random_sequence": "gigatubes:blocks/tube_io"
+}

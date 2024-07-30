@@ -1,0 +1,52 @@
+{
+    "parent": "minecraft:block/block",
+    "elements": [
+        {   
+            "from": [ 5, 5, 5 ],
+            "to": [ 11, 11, 11 ],
+            "faces": {
+                "west": { "texture": "#outside" },
+                "south":  { "texture": "#outside", "rotation": 90 },
+                "down":  { "texture": "#outside", "rotation": 180 }
+                
+            }
+        },
+        {
+            "from": [ 11, 5, 5 ],
+            "to": [ 16, 11, 11 ],
+            "faces": {
+                "up": { "texture": "#inside" },
+                "down": { "texture": "#outside", "uv": [ 0, 5, 5, 11 ], "rotation": 180 },
+                "north": { "texture": "#inside" },
+                "south": { "texture": "#outside", "uv": [ 5, 0, 11, 5 ], "rotation": 90 },
+
+                "east": { "texture": "#inside", "uv": [ 5, 5, 11, 11 ], "cullface": "east" }
+            }
+        },
+        {
+            "from": [ 5, 11, 5 ],
+            "to": [ 11, 16, 11],
+            "faces": {
+                "east": { "texture": "#inside" },
+                "west": { "texture": "#outside" },
+                "north": { "texture": "#inside" },
+                "south": { "texture": "#outside", "uv": [ 0, 5, 5, 11 ], "rotation": 90 },
+
+                "up": { "texture": "#inside", "uv": [ 5, 5, 11, 11 ], "cullface": "up" }
+            }
+        },
+        {
+            "from": [ 5, 5, 0 ],
+            "to": [ 11, 11, 5 ],
+            "faces": {
+                "east": { "texture": "#inside" },
+                "west": { "texture": "#outside" },
+                "up": { "texture": "#inside" },
+                "down": { "texture": "#outside", "uv": [ 5, 0, 11, 5 ], "rotation": 180 },
+
+                "north": { "texture": "#inside", "uv": [ 5, 5, 11, 11 ], "cullface": "north" }
+            }
+        }
+        
+    ]
+}

@@ -1,0 +1,9 @@
+{
+    "parent": "gigatubes:block/tube_1",
+    "textures": {
+        "end": "gigatubes:block/gigatube_0",
+        "inside": "gigatubes:block/gigatube_4",
+        "side": "gigatubes:block/gigatube_1",
+        "particle": "gigatubes:block/gigatube_particle"
+    }
+}

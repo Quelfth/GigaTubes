@@ -1,0 +1,11 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "category": "misc",
+    "ingredients": [
+        { "item": "gigatubes:chadmium_block" }
+    ],
+    "result": {
+        "count": 9,
+        "item": "gigatubes:chadmium_ingot"
+    }
+}

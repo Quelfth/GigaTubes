@@ -1,0 +1,76 @@
+{
+    "multipart": [
+        {
+            "when": { "down_in": "true", "down_out": "false" },
+            "apply": { "model": "gigatubes:block/tube_intake" }
+        },
+        {
+            "when": { "down_in": "false", "down_out": "true" },
+            "apply": { "model": "gigatubes:block/tube_output" }
+        },
+        {
+            "when": { "down_in": "true", "down_out": "true" },
+            "apply": { "model": "gigatubes:block/tube_io" }
+        },
+        {
+            "when": { "up_in": "true", "up_out": "false" },
+            "apply": { "model": "gigatubes:block/tube_intake", "x": 180 }
+        },
+        {
+            "when": { "up_in": "false", "up_out": "true" },
+            "apply": { "model": "gigatubes:block/tube_output", "x": 180 }
+        },
+        {
+            "when": { "up_in": "true", "up_out": "true" },
+            "apply": { "model": "gigatubes:block/tube_io", "x": 180 }
+        },
+        {
+            "when": { "south_in": "true", "south_out": "false" },
+            "apply": { "model": "gigatubes:block/tube_intake", "x": 90 }
+        },
+        {
+            "when": { "south_in": "false", "south_out": "true" },
+            "apply": { "model": "gigatubes:block/tube_output", "x": 90 }
+        },
+        {
+            "when": { "south_in": "true", "south_out": "true" },
+            "apply": { "model": "gigatubes:block/tube_io", "x": 90 }
+        },
+        {
+            "when": { "north_in": "true", "north_out": "false" },
+            "apply": { "model": "gigatubes:block/tube_intake", "x": 90, "y": 180 }
+        },
+        {
+            "when": { "north_in": "false", "north_out": "true" },
+            "apply": { "model": "gigatubes:block/tube_output", "x": 90, "y": 180 }
+        },
+        {
+            "when": { "north_in": "true", "north_out": "true" },
+            "apply": { "model": "gigatubes:block/tube_io", "x": 90, "y": 180 }
+        },
+        {
+            "when": { "east_in": "true", "east_out": "false" },
+            "apply": { "model": "gigatubes:block/tube_intake", "x": 90, "y": 270 }
+        },
+        {
+            "when": { "east_in": "false", "east_out": "true" },
+            "apply": { "model": "gigatubes:block/tube_output", "x": 90, "y": 270 }
+        },
+        {
+            "when": { "east_in": "true", "east_out": "true" },
+            "apply": { "model": "gigatubes:block/tube_io", "x": 90, "y": 270 }
+        },
+        {
+            "when": { "west_in": "true", "west_out": "false" },
+            "apply": { "model": "gigatubes:block/tube_intake", "x": 90, "y": 90 }
+        },
+        {
+            "when": { "west_in": "false", "west_out": "true" },
+            "apply": { "model": "gigatubes:block/tube_output", "x": 90, "y": 90 }
+        },
+        {
+            "when": { "west_in": "true", "west_out": "true" },
+            "apply": { "model": "gigatubes:block/tube_io", "x": 90, "y": 90 }
+        }
+    ]
+}

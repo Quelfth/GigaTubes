@@ -1,0 +1,13 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "category": "misc",
+    "pattern": [
+        "CB",
+        "BC"
+    ],
+    "key": {
+        "C": { "tag": "forge:cobblestone/normal" },
+        "B": { "item": "minecraft:basalt" }
+    },
+    "result": { "item": "gigatubes:raw_chadmium" }
+}

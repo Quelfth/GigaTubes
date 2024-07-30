@@ -1,0 +1,11 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "category": "misc",
+    "ingredients": [
+        { "item": "gigatubes:megachadmium_ingot" }
+    ],
+    "result": {
+        "count": 9,
+        "item": "gigatubes:megachadmium_nugget"
+    }
+}

@@ -1,0 +1,50 @@
+{
+    "item.gigatubes.chadmium_ingot": "Chadmium Ingot",
+    "item.gigatubes.kilochadmium_ingot": "Kilochadmium Ingot",
+    "item.gigatubes.megachadmium_ingot": "Megachadmium Ingot",
+    "item.gigatubes.gigachadmium_ingot": "Gigachadmium Ingot",
+
+    "item.gigatubes.raw_chadmium": "Raw Chadmium",
+    "item.gigatubes.raw_kilochadmium": "Raw Kilochadmium",
+    "item.gigatubes.raw_megachadmium": "Raw Megachadmium",
+    "item.gigatubes.raw_gigachadmium": "Raw Gigachadmium",
+
+    "item.gigatubes.chadmium_nugget": "Chadmium Nugget",
+    "item.gigatubes.kilochadmium_nugget": "Kilochadmium Nugget",
+    "item.gigatubes.megachadmium_nugget": "Megachadmium Nugget",
+    "item.gigatubes.gigachadmium_nugget": "Gigachadmium Nugget",
+
+    "item.gigatubes.beta_particle": "Beta Particle",
+
+    "item.gigatubes.beta_wrench": "Beta Wrench",
+    "item.gigatubes.kilo_wrench": "Kilo Wrench",
+    "item.gigatubes.mega_wrench": "Mega Wrench",
+    "item.gigatubes.giga_wrench": "Giga Wrench",
+
+    "item.gigatubes.tube_intake": "Tube Intake",
+    "item.gigatubes.tube_output": "Tube Output",
+
+    "item.gigatubes.tube_filter": "Tube Filter",
+    "item.gigatubes.empty_tube_filter": "Tube Filter",
+    "item.gigatubes.invalid_tube_filter": "Tube Filter",
+
+    "tooltip.gigatubes.empty_tube_filter": "§7Empty§f",
+    "tooltip.gigatubes.invalid_tube_filter": "§cInvalid Filter Script§f",
+
+    "block.gigatubes.chadmium_block": "Block of Chadmium",
+    "block.gigatubes.kilochadmium_block": "Block of Kilochadmium",
+    "block.gigatubes.megachadmium_block": "Block of Megachadmium",
+    "block.gigatubes.gigachadmium_block": "Block of Gigachadmium",
+
+    "block.gigatubes.chadmium_compressor": "Chadmium Compressor",
+    "block.gigatubes.kilo_compressor": "Kilo Compressor",
+
+    "block.gigatubes.tube": "Tube",
+    "block.gigatubes.kilotube": "Kilotube",
+    "block.gigatubes.megatube": "Megatube",
+    "block.gigatubes.gigatube": "Gigatube",
+
+    "creativetab.gigatubes": "Gigatubes",
+    "text.gigatubes.dismantled_lore": "§r§6Giga Intact",
+    "text.gigatubes.filter_edit": "Edit Filter"
+}

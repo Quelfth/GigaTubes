@@ -1,0 +1,14 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "category": "misc",
+    "pattern": [
+        "#$#",
+        " $ ",
+        " # "
+    ],
+    "key": { 
+        "#": { "item": "gigatubes:megachadmium_ingot" },
+        "$": { "item": "gigatubes:kilo_wrench" }
+    },
+    "result": { "item": "gigatubes:mega_wrench" }
+}

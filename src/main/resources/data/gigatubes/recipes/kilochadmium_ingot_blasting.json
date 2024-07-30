@@ -1,0 +1,11 @@
+{
+    "type": "minecraft:blasting",
+    "category": "misc",
+    "cookingtime": 100,
+    "experience": 10,
+    "group": "chadmium_ingot",
+    "ingredient": {
+      "item": "gigatubes:raw_kilochadmium"
+    },
+    "result": "gigatubes:kilochadmium_ingot"
+  }

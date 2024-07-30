@@ -1,0 +1,11 @@
+{
+    "type": "minecraft:smelting",
+    "category": "misc",
+    "cookingtime": 200,
+    "experience": 10000,
+    "group": "chadmium_ingot",
+    "ingredient": {
+      "item": "gigatubes:raw_gigachadmium"
+    },
+    "result": "gigatubes:gigachadmium_ingot"
+  }

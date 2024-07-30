@@ -1,0 +1,8 @@
+{
+    "parent": "minecraft:block/orientable",
+    "textures": {
+        "front": "gigatubes:block/chadmium_compressor_front",
+        "side": "gigatubes:block/chadmium_compressor_side",
+        "top": "gigatubes:block/chadmium_compressor_side"
+    }
+}

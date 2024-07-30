@@ -1,0 +1,9 @@
+{
+    "type": "gigatubes:chadmium_compressor",
+    "ingredients": [
+        { "item": "gigatubes:kilochadmium_ingot" }
+    ],
+    "result": {
+        "item": "gigatubes:raw_megachadmium"
+    }
+}

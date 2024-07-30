@@ -1,0 +1,11 @@
+{
+    "values": [
+        "minecraft:chest",
+        "minecraft:furnace",
+        "minecraft:trapped_chest",
+        "minecraft:barrel",
+        "minecraft:brewing_stand",
+        "gigatubes:chadmium_compressor",
+        "gigatubes:kilo_compressor"
+    ]
+}
