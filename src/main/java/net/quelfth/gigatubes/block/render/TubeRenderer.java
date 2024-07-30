@@ -11,18 +11,15 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.resources.model.BakedModel;
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LightLayer;
 import net.minecraftforge.client.model.data.ModelData;
 import net.quelfth.gigatubes.LazyCache;
 import net.quelfth.gigatubes.GigaModels.Model;
@@ -45,9 +42,18 @@ public class TubeRenderer implements BlockEntityRenderer<TubeBlockEntity> {
     
     @Override
     public void render(final TubeBlockEntity tube, final float partialTick, final PoseStack pose, final MultiBufferSource buffers, final int light, final int overlay) {
-        final @Nonnull RandomSource random = Minecraft.getInstance().level.random;
+        final Minecraft minecraft = Minecraft.getInstance();
+        if (minecraft == null)
+            return;
+        final Level level = minecraft.level;
+        if (level == null)
+            return;
+        final @Nonnull RandomSource random = level.random;
+        @SuppressWarnings("null")
         final @Nonnull List<BakedQuad> intake = intakeCache.get().getQuads(null, null, random, ModelData.EMPTY, RenderType.cutout());
+        @SuppressWarnings("null")
         final @Nonnull List<BakedQuad> output = outputCache.get().getQuads(null, null, random, ModelData.EMPTY, RenderType.cutout());
+        @SuppressWarnings("null")
         final @Nonnull List<BakedQuad> io = ioCache.get().getQuads(null, null, random, ModelData.EMPTY, RenderType.cutout());
 
         final @Nonnull VertexConsumer buffer = buffers.getBuffer(RenderType.cutout());
@@ -65,11 +71,11 @@ public class TubeRenderer implements BlockEntityRenderer<TubeBlockEntity> {
         }
     }
 
-    private int getLightLevel(Level level, BlockPos pos) {
-        int b = level.getBrightness(LightLayer.BLOCK, pos);
-        int s = level.getBrightness(LightLayer.SKY, pos);
-        return LightTexture.pack(b, s);
-    }
+    // private int getLightLevel(Level level, BlockPos pos) {
+    //     int b = level.getBrightness(LightLayer.BLOCK, pos);
+    //     int s = level.getBrightness(LightLayer.SKY, pos);
+    //     return LightTexture.pack(b, s);
+    // }
 
     private void renderIO(final Direction dir, final PoseStack pose, final VertexConsumer buffer, final List<BakedQuad> quads, final int light, final int overlay) {
         pose.pushPose();

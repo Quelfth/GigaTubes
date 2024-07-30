@@ -11,7 +11,6 @@ import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.InteractionHand;
 import net.quelfth.gigatubes.GigaTubes;
 import net.quelfth.gigatubes.network.GigaPacketHandler;
 import net.quelfth.gigatubes.network.ServerboundFilterEditPacket;

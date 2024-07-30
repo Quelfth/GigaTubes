@@ -1,6 +1,5 @@
 package net.quelfth.gigatubes.util.code;
 
-import java.util.ArrayList;
 
 public final class ParagraphFormat {
     private final byte[][] formats;

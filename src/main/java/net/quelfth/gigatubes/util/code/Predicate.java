@@ -4,11 +4,10 @@ import java.lang.Iterable;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.minecraft.nbt.CollectionTag;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.StringTag;
-import net.minecraft.network.FriendlyByteBuf;
+
 
 public sealed interface Predicate permits Predicate.Disjunction, Predicate.Conjunction, Predicate.Negation, SimplePredicate {
 

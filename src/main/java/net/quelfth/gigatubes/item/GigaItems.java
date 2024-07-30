@@ -1,6 +1,5 @@
 package net.quelfth.gigatubes.item;
 
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -12,7 +11,6 @@ import net.quelfth.gigatubes.item.items.IncompleteTubeFilterItem;
 import net.quelfth.gigatubes.item.items.TubeFilterItem;
 import net.quelfth.gigatubes.item.items.TubeIntakeItem;
 import net.quelfth.gigatubes.item.items.TubeItem;
-import net.quelfth.gigatubes.item.items.TubeModuleItem;
 import net.quelfth.gigatubes.item.items.TubeOutputItem;
 
 public class GigaItems {

@@ -4,14 +4,12 @@ import java.util.function.Supplier;
 
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.tags.TagBuilder;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.network.NetworkEvent;
 import net.quelfth.gigatubes.item.GigaItems;
 import net.quelfth.gigatubes.item.items.ITubeFilterItem;
 import net.quelfth.gigatubes.item.items.TubeFilterItem;
 import net.quelfth.gigatubes.util.Couple;
-import net.quelfth.gigatubes.util.code.CodeParagraph;
 import net.quelfth.gigatubes.util.code.GigaParser;
 import net.quelfth.gigatubes.util.code.Predicate;
 import net.quelfth.gigatubes.util.code.ParagraphFormat;
