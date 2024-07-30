@@ -11,7 +11,8 @@ public class GigaModels {
     public enum Model {
         TUBE_INTAKE("block/tube_intake"),
         TUBE_OUTPUT("block/tube_output"),
-        TUBE_IO("block/tube_io");
+        TUBE_IO("block/tube_io"),
+        TUBE_FILTER("item/tube_filter");
 
         public final ResourceLocation resource;
         public final LazyCache<BakedModel> cache;

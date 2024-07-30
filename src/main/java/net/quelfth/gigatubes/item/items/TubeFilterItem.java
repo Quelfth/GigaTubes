@@ -8,8 +8,11 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.quelfth.gigatubes.block.tube_parts.FilterModule;
+import net.quelfth.gigatubes.block.tube_parts.TubeModule;
 import net.quelfth.gigatubes.item.GigaItems;
 import net.quelfth.gigatubes.screen.FilterEditScreen;
+import net.quelfth.gigatubes.util.code.Predicate;
 
 public final class TubeFilterItem extends TubeModuleItem implements ITubeFilterItem {
     
@@ -35,5 +38,13 @@ public final class TubeFilterItem extends TubeModuleItem implements ITubeFilterI
             
         }
         return super.use(level, player, hand);
+    }
+
+    @Override
+    public TubeModule asModule(final ItemStack item) {
+        CompoundTag tag = item.getTag();
+        if (tag == null)
+            return new FilterModule("", Predicate.NONE);
+        return new FilterModule(tag.getString(SOURCE_TAG), Predicate.deserialize(tag.getCompound(PREDICATE_TAG)));
     }
 }

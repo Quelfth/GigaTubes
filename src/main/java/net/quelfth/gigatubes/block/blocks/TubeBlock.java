@@ -38,12 +38,13 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.quelfth.gigatubes.block.GigaBlockEntities;
 import net.quelfth.gigatubes.block.entities.TubeBlockEntity;
+import net.quelfth.gigatubes.block.tube_parts.TubeModule;
 import net.quelfth.gigatubes.item.GigaItems;
 import net.quelfth.gigatubes.item.Wrench;
 import net.quelfth.gigatubes.util.GigaUtil;
 
 
-public class TubeBlock extends Block implements ITubeConnect, IAcceptsTubeIO, EntityBlock {
+public class TubeBlock extends Block implements ITubeConnect, IAcceptsTubeIO, IAcceptsTubeModule, EntityBlock {
     
     public static final BooleanProperty UP = BooleanProperty.create("up");
     public static final BooleanProperty DOWN = BooleanProperty.create("down");
@@ -73,6 +74,18 @@ public class TubeBlock extends Block implements ITubeConnect, IAcceptsTubeIO, En
     private static final VoxelShape SHAPE_SOUTH_IO = Block.box(4., 4., 14., 12., 12., 16.);
     private static final VoxelShape SHAPE_EAST_IO = Block.box(14., 4., 4., 16., 12., 12.);
     private static final VoxelShape SHAPE_WEST_IO = Block.box(0., 4., 4., 2., 12., 12.);
+    private static final VoxelShape SHAPE_UP_MODULE_NEAR = Block.box(3., 13., 3., 13., 14., 13.);
+    private static final VoxelShape SHAPE_DOWN_MODULE_NEAR = Block.box(3., 2., 3., 13., 3., 13.);
+    private static final VoxelShape SHAPE_NORTH_MODULE_NEAR = Block.box(3., 3., 2., 13., 13., 3.);
+    private static final VoxelShape SHAPE_SOUTH_MODULE_NEAR = Block.box(3., 3., 13., 13., 13., 14.);
+    private static final VoxelShape SHAPE_EAST_MODULE_NEAR = Block.box(13., 3., 3., 14., 13., 13.);
+    private static final VoxelShape SHAPE_WEST_MODULE_NEAR = Block.box(2., 3., 3., 3., 13., 13.);
+    private static final VoxelShape SHAPE_UP_MODULE = Block.box(3., 14., 3., 13., 15., 13.);
+    private static final VoxelShape SHAPE_DOWN_MODULE = Block.box(3., 1., 3., 13., 2., 13.);
+    private static final VoxelShape SHAPE_NORTH_MODULE = Block.box(3., 3., 1., 13., 13., 2.);
+    private static final VoxelShape SHAPE_SOUTH_MODULE = Block.box(3., 3., 14., 13., 13., 15.);
+    private static final VoxelShape SHAPE_EAST_MODULE = Block.box(14., 3., 3., 15., 13., 13.);
+    private static final VoxelShape SHAPE_WEST_MODULE = Block.box(1., 3., 3., 2., 13., 13.);
 
     public TubeBlock() {
         super(Properties.of()
@@ -316,15 +329,41 @@ public class TubeBlock extends Block implements ITubeConnect, IAcceptsTubeIO, En
         if (state.getValue(DATA)) {
             TubeBlockEntity entity = getTubeBlockEntity(level, pos);
             if (entity != null) {
-                if (entity.anyIO(Direction.UP)) shape = Shapes.join(shape, SHAPE_UP_IO, op);
-                if (entity.anyIO(Direction.DOWN)) shape = Shapes.join(shape, SHAPE_DOWN_IO, op);
-                if (entity.anyIO(Direction.NORTH)) shape = Shapes.join(shape, SHAPE_NORTH_IO, op);
-                if (entity.anyIO(Direction.SOUTH)) shape = Shapes.join(shape, SHAPE_SOUTH_IO, op);
-                if (entity.anyIO(Direction.EAST)) shape = Shapes.join(shape, SHAPE_EAST_IO, op);
-                if (entity.anyIO(Direction.WEST)) shape = Shapes.join(shape, SHAPE_WEST_IO, op);
+                for (Direction dir : Direction.values()) {
+                    boolean io = entity.anyIO(dir);
+                    if (io) {
+                        shape = Shapes.join(shape, ioShape(dir), op);
+                    }
+                    if (entity.anyModule(dir))
+                        shape = Shapes.join(shape, moduleShape(dir, io), op);
+                }
             }
         }
         return shape;
+    }
+
+    private static VoxelShape ioShape(final Direction dir) {
+        switch (dir) {
+            case UP -> { return SHAPE_UP_IO; }
+            case DOWN -> { return SHAPE_DOWN_IO; }
+            case NORTH -> { return SHAPE_NORTH_IO; }
+            case SOUTH -> { return SHAPE_SOUTH_IO; }
+            case EAST -> { return SHAPE_EAST_IO; }
+            case WEST -> { return SHAPE_WEST_IO; }
+        }
+        return null;
+    }
+
+    private static VoxelShape moduleShape(final Direction dir, boolean near) {
+        switch (dir) {
+            case UP -> { return near ? SHAPE_UP_MODULE_NEAR : SHAPE_UP_MODULE; }
+            case DOWN -> { return near ? SHAPE_DOWN_MODULE_NEAR : SHAPE_DOWN_MODULE; }
+            case NORTH -> { return near ? SHAPE_NORTH_MODULE_NEAR : SHAPE_NORTH_MODULE; }
+            case SOUTH -> { return near ? SHAPE_SOUTH_MODULE_NEAR : SHAPE_SOUTH_MODULE; }
+            case EAST -> { return near ? SHAPE_EAST_MODULE_NEAR : SHAPE_EAST_MODULE; }
+            case WEST -> { return near ? SHAPE_WEST_MODULE_NEAR : SHAPE_WEST_MODULE; }
+        }
+        return null;
     }
 
     @Override
@@ -398,27 +437,65 @@ public class TubeBlock extends Block implements ITubeConnect, IAcceptsTubeIO, En
         final double absY = Math.abs(offset.y);
         final double absZ = Math.abs(offset.z);
 
-        if ((absX < 6. && absY < 6. && absZ < 6.)
-            || absX < 3. && (absY < 3. || absZ < 3.) || absY < 3. && absZ < 3.
-            )
-            return;
-        
-        final @Nonnull Direction dir = GigaUtil.predominantDir(offset);
-
-        final Vec3 location = hit.getLocation();
-
-        boolean success = false;
-
-        if (entity.getIO(dir, true)) {
-            entity.setIO(dir, true, false);
-            level.addFreshEntity(new ItemEntity(level, location.x, location.y, location.z, new ItemStack(GigaItems.TUBE_INTAKE.get())));
-            success = true;
+        final double t;
+        final double u;
+        final double v;
+        if (absX > absY && absX > absZ) {
+            t = absX;
+            u = absY;
+            v = absZ;
         }
+        else if (absY > absZ) {
+            t = absY;
+            u = absX;
+            v = absZ;
+        }
+        else {
+            t = absZ;
+            u = absX;
+            v = absY;
+        }
+
+
+        final @Nonnull Direction dir = GigaUtil.predominantDir(offset);
         
-        if (entity.getIO(dir, false)) {
-            entity.setIO(dir, false, false);
-            level.addFreshEntity(new ItemEntity(level, location.x, location.y, location.z, new ItemStack(GigaItems.TUBE_OUTPUT.get())));
-            success = true;
+        
+        boolean success = false;
+        final Vec3 location = hit.getLocation();
+        if (u >= 2. || v >= 2. || !state.getValue(tubeProp(dir))) {
+            if (entity.anyIO(dir)) {
+                if (t >= 6.) {
+                    if (entity.getIO(dir, true)) {
+                        entity.setIO(dir, true, false);
+                        level.addFreshEntity(new ItemEntity(level, location.x, location.y, location.z, new ItemStack(GigaItems.TUBE_INTAKE.get())));
+                        success = true;
+                    }
+                    
+                    if (entity.getIO(dir, false)) {
+                        entity.setIO(dir, false, false);
+                        level.addFreshEntity(new ItemEntity(level, location.x, location.y, location.z, new ItemStack(GigaItems.TUBE_OUTPUT.get())));
+                        success = true;
+                    }
+                }
+                else if (t >= 5.) {
+                    final TubeModule module = entity.getModule(dir);
+                    if (module != null) {
+                        entity.setModule(dir, null);
+                        level.addFreshEntity(new ItemEntity(level, location.x, location.y, location.z, module.asItem()));
+                        success = true;
+                    }
+                }
+            }
+            else {
+                if (t <= 7. && t >= 6.) {
+                    final TubeModule module = entity.getModule(dir);
+                    if (module != null) {
+                        entity.setModule(dir, null);
+                        level.addFreshEntity(new ItemEntity(level, location.x, location.y, location.z, module.asItem()));
+                        success = true;
+                    }
+                }
+            }
         }
        
         if (!success) return;
@@ -493,6 +570,21 @@ public class TubeBlock extends Block implements ITubeConnect, IAcceptsTubeIO, En
                 (BlockEntityTicker<T>) (BlockEntityTicker<TubeBlockEntity>) (l, p, s, e) -> e.tick(l, p, s) 
             : 
                 null;
+    }
+
+    @Override
+    public boolean acceptTubeModule(BlockState state, BlockPos pos, Level level, Direction dir, TubeModule module) {
+        if (!state.getValue(DATA)) {
+            state = state.setValue(DATA, true);
+            level.setBlockAndUpdate(pos, state);
+        }
+        TubeBlockEntity tube = getTubeBlockEntity(level, pos);
+        if (tube != null) {
+            boolean added = tube.tryAddModule(dir, module);
+
+            return added;
+        }
+        return false;
     }
 
 

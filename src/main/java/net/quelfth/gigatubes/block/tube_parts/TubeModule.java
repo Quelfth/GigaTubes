@@ -1,6 +1,7 @@
 package net.quelfth.gigatubes.block.tube_parts;
 
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.item.ItemStack;
 import net.quelfth.gigatubes.item.items.TubeFilterItem;
 import net.quelfth.gigatubes.util.code.Predicate;
 
@@ -17,5 +18,7 @@ public abstract class TubeModule {
 
         return null;
     }
+
+    public abstract ItemStack asItem();
     
 }

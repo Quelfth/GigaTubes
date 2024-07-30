@@ -3,6 +3,8 @@ package net.quelfth.gigatubes.block.entities;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -54,6 +56,11 @@ public class TubeBlockEntity extends BlockEntity {
         return (in ? intakes : outputs)[dir.get3DDataValue()];
     }
 
+    @Nullable
+    public TubeModule getModule(Direction dir) {
+        return modules[dir.get3DDataValue()];
+    }
+
     public boolean doesIntake(BlockState state, Direction dir) {
         return getIO(dir, true) && state.getValue(TubeBlock.tubeProp(dir));
     }
@@ -62,10 +69,17 @@ public class TubeBlockEntity extends BlockEntity {
         return getIO(dir, false) && state.getValue(TubeBlock.tubeProp(dir));
     }
 
+
+
     
 
     public void setIO(Direction dir, boolean in, boolean value) {
         (in ? intakes : outputs)[dir.get3DDataValue()] = value;
+        setChanged();
+    }
+
+    public void setModule(Direction dir, @Nullable TubeModule module) {
+        modules[dir.get3DDataValue()] = module;
         setChanged();
     }
 
@@ -76,8 +90,19 @@ public class TubeBlockEntity extends BlockEntity {
         return can;
     }
 
+    public boolean tryAddModule(Direction dir, TubeModule module) {
+        boolean can = !anyModule(dir);
+        if (can)
+            setModule(dir, module);
+        return can;
+    }
+
     public boolean anyIO(Direction dir) {
         return intakes[dir.get3DDataValue()] || outputs[dir.get3DDataValue()];
+    }
+
+    public boolean anyModule(Direction dir) {
+        return modules[dir.get3DDataValue()] != null;
     }
 
     public boolean onlyIntake(Direction dir) {
@@ -110,7 +135,7 @@ public class TubeBlockEntity extends BlockEntity {
 
     public boolean shouldExist() {
         for (Direction dir : Direction.values()) 
-            if (anyIO(dir))
+            if (anyIO(dir) || anyModule(dir))
                 return true;
         
         return false;
@@ -166,7 +191,7 @@ public class TubeBlockEntity extends BlockEntity {
     private static ListTag moduleDataToListTag(TubeModule[] modules) {
         ListTag tag = new ListTag();
         for (TubeModule module : modules)
-            tag.add(module.serialize());
+            tag.add(module == null ? new CompoundTag() : module.serialize());
         return tag;
     }
 
@@ -186,12 +211,21 @@ public class TubeBlockEntity extends BlockEntity {
 
     public void drops() {
 
-        final @Nonnull SimpleContainer items = new SimpleContainer(2);
-        items.setItem(0, new ItemStack(GigaItems.TUBE_INTAKE.get(), numIntakes()));
-        items.setItem(1, new ItemStack(GigaItems.TUBE_OUTPUT.get(), numOutputs()));
+        List<ItemStack> items = new ArrayList<>();
+        items.add(new ItemStack(GigaItems.TUBE_INTAKE.get(), numIntakes()));
+        items.add(new ItemStack(GigaItems.TUBE_OUTPUT.get(), numOutputs()));
+        for (Direction dir : Direction.values()) {
+            final TubeModule module = getModule(dir);
+            if (module != null)
+                items.add(module.asItem());
+        }
+
+        final @Nonnull SimpleContainer container = new SimpleContainer(items.size());
+        for (int i = 0; i < items.size(); i++) 
+            container.setItem(i, items.get(i));
 
         if(level != null)
-            Containers.dropContents(level, worldPosition, items);
+            Containers.dropContents(level, worldPosition, container);
     }
 
 

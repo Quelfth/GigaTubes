@@ -10,5 +10,5 @@
         ".": { "item": "gigatubes:beta_particle" },
         "#": { "item": "minecraft:nether_quartz" }
     },
-    "result": { "item": "gigatubes:tube_filter", "count": 4 }
+    "result": { "item": "gigatubes:empty_tube_filter", "count": 4 }
 }
