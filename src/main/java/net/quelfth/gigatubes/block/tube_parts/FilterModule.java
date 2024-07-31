@@ -32,4 +32,9 @@ public class FilterModule extends TubeModule {
         item.addTagElement(TubeFilterItem.PREDICATE_TAG, predicate.serialize());
         return item;
     }
+
+
+    public Predicate getPredicate() {
+        return predicate;
+    }
 }

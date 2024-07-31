@@ -3,8 +3,11 @@ package net.quelfth.gigatubes.util.code;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.StringTag;
 import net.minecraft.nbt.Tag;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.registries.ForgeRegistries;
 
-public abstract sealed class SimplePredicate implements Predicate {
+public abstract sealed class SimplePredicate extends Predicate {
 
     @Override
     public CompoundTag serialize() {
@@ -24,6 +27,22 @@ public abstract sealed class SimplePredicate implements Predicate {
         @Override
         protected String nbtTypeName() {
             return "any";
+        }
+
+        @Override
+        public boolean identical(Predicate predicate) {
+            return predicate instanceof Any;
+        }
+
+        @Override
+        public boolean allows(ItemStack item) {
+            return true;
+        }
+
+
+        @Override
+        public String toString() {
+            return "*";
         }
 
     }
@@ -55,6 +74,18 @@ public abstract sealed class SimplePredicate implements Predicate {
         protected Tag nbtData() {
             return StringTag.valueOf(namespace+":"+id);
         }
+
+        @Override
+        public boolean identical(Predicate predicate) {
+            return predicate instanceof Item item && item.namespace.equals(namespace) && item.id.equals(id);
+        }
+
+        @Override
+        public boolean allows(ItemStack item) {
+            
+            return ForgeRegistries.ITEMS.containsKey(new ResourceLocation(namespace, id)) 
+                && item.is(ForgeRegistries.ITEMS.getValue(new ResourceLocation(namespace, id)));
+        }
     }
 
     public static final class AnyItem extends SimplePredicate {
@@ -67,5 +98,17 @@ public abstract sealed class SimplePredicate implements Predicate {
         protected String nbtTypeName() {
             return "any_item";
         }
+
+        @Override
+        public boolean identical(Predicate predicate) {
+            return predicate instanceof AnyItem;
+        }
+
+        @Override
+        public boolean allows(ItemStack item) {
+            return true;
+        }
+
+        
     }
 }

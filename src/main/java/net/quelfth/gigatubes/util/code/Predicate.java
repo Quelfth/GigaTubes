@@ -4,17 +4,31 @@ import java.lang.Iterable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.StringTag;
+import net.minecraft.world.item.ItemStack;
 
 
-public sealed interface Predicate permits Predicate.Disjunction, Predicate.Conjunction, Predicate.Negation, SimplePredicate {
+public sealed abstract class Predicate permits Predicate.Disjunction, Predicate.Conjunction, Predicate.Negation, SimplePredicate {
 
 
     public abstract CompoundTag serialize();
 
-    public static final class Disjunction implements Predicate {
+    @Override
+    public final boolean equals(@Nullable Object obj) {
+        if (obj instanceof Predicate pred)
+            return identical(pred);
+        return false;
+    }
+
+    public abstract boolean identical(Predicate predicate);
+
+    public abstract boolean allows(ItemStack item);
+
+    public static final class Disjunction extends Predicate {
         private final List<Predicate> disjuncts;
 
         public Disjunction(Iterable<Predicate> iter) {
@@ -54,16 +68,52 @@ public sealed interface Predicate permits Predicate.Disjunction, Predicate.Conju
             tag.put("OR", elements);
             return tag;
         }
+
+        @Override
+        public boolean identical(Predicate predicate) {
+            if (predicate instanceof Disjunction disjunction && disjuncts.size() == disjunction.disjuncts.size()) {
+                for (int i = 0; i < disjuncts.size(); i++)
+                    if (!disjuncts.get(i).identical(disjunction.disjuncts.get(i)))
+                        return false;
+                return true;
+            }
+            return false;
+        }
+
+        public boolean directlyContains(Predicate predicate) {
+            for (Predicate disjunct : disjuncts)
+                if (disjunct.identical(predicate))
+                    return true;
+            return false;
+        }
+
+        @Override
+        public boolean allows(ItemStack item) {
+            for (Predicate disjunct : disjuncts)
+                if (disjunct.allows(item))
+                    return true;
+            return false;
+        }
     }
 
-    public static final class Conjunction implements Predicate {
+    public static final class Conjunction extends Predicate {
         private final List<Predicate> conjuncts;
 
         public Conjunction(Iterable<Predicate> iter) {
             conjuncts = new ArrayList<Predicate>();
             for (Predicate p : iter) {
-                if (p instanceof Disjunction disjunct) 
-                    conjuncts.addAll(disjunct.disjuncts);
+                if (p instanceof Conjunction conjunct) 
+                    conjuncts.addAll(conjunct.conjuncts);
+                else
+                    conjuncts.add(p);
+            }
+        }
+
+        public Conjunction(Predicate... preds) {
+            conjuncts = new ArrayList<Predicate>();
+            for (Predicate p : preds) {
+                if (p instanceof Conjunction conjunct) 
+                    conjuncts.addAll(conjunct.conjuncts);
                 else
                     conjuncts.add(p);
             }
@@ -96,9 +146,35 @@ public sealed interface Predicate permits Predicate.Disjunction, Predicate.Conju
             tag.put("AND", elements);
             return tag;
         }
+
+        @Override
+        public boolean identical(Predicate predicate) {
+            if (predicate instanceof Conjunction conjunction && conjuncts.size() == conjunction.conjuncts.size()) {
+                for (int i = 0; i < conjuncts.size(); i++)
+                    if (!conjuncts.get(i).identical(conjunction.conjuncts.get(i)))
+                        return false;
+                return true;
+            }
+            return false;
+        }
+
+        public boolean directlyContains(Predicate predicate) {
+            for (Predicate conjunct : conjuncts)
+                if (conjunct.identical(predicate))
+                    return true;
+            return false;
+        }
+
+        @Override
+        public boolean allows(ItemStack item) {
+            for (Predicate conjunct : conjuncts)
+                if (!conjunct.allows(item))
+                    return false;
+            return true;
+        }
     }
 
-    public static final class Negation implements Predicate {
+    public static final class Negation extends Predicate {
         private final Predicate negand;
 
         public Negation(Predicate negand) {
@@ -116,6 +192,16 @@ public sealed interface Predicate permits Predicate.Disjunction, Predicate.Conju
             tag.put("NOT", negand.serialize());
             return tag;
         }
+
+        @Override
+        public boolean identical(Predicate predicate) {
+            return predicate instanceof Negation negation && negation.negand.identical(negand);
+        }
+
+        @Override
+        public boolean allows(ItemStack item) {
+            return !negand.allows(item);
+        }
     }
     
     public static final Predicate ANY = new SimplePredicate.Any();
@@ -131,7 +217,19 @@ public sealed interface Predicate permits Predicate.Disjunction, Predicate.Conju
         return new SimplePredicate.Item(id);
     }
 
-    
+    public static Predicate and(Predicate p, Predicate q) {
+        if (p.identical(q))
+            return p;
+        if (p.obviousSuperset(q))
+            return q;
+        if (q.obviousSuperset(p))
+            return p;
+        return new Conjunction(p, q);
+    }
+
+    public boolean obviousSuperset(Predicate that) {
+        return this instanceof Disjunction dis && dis.directlyContains(that) || that instanceof Conjunction con && con.directlyContains(this);
+    }
 
     public static Predicate deserialize(CompoundTag tag) {
         if (tag.get("OR") instanceof ListTag disjunction) {

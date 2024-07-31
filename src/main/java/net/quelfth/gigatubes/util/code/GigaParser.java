@@ -4,6 +4,8 @@ package net.quelfth.gigatubes.util.code;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+import net.minecraft.resources.ResourceLocation;
+import net.minecraftforge.registries.ForgeRegistries;
 import net.quelfth.gigatubes.util.CodeCharType;
 import net.quelfth.gigatubes.util.Couple;
 import net.quelfth.gigatubes.util.Wrapper;
@@ -17,9 +19,9 @@ import java.util.Arrays;
 public class GigaParser {
 
     private static void printFrags(CodeFragment[] frags) {
-        for (CodeFragment fragment : frags)
-            System.out.print(fragment + ",");
-        System.out.println();
+        // for (CodeFragment fragment : frags)
+        //     System.out.print(fragment + ",");
+        // System.out.println();
     }
 
     public static Couple<Predicate, ParagraphFormat> parseIntoPredicate(final String code) {
@@ -162,7 +164,7 @@ public class GigaParser {
             return parseSimplePredicate(fragments, paragraph, formatting);
         }
         if (fragments[i] instanceof BranchFragment branch) {
-            System.out.println(paragraph.get(branch.start()));
+            //System.out.println(paragraph.get(branch.start()));
             if (paragraph.get(branch.start()) == '(') {
                 
                 formatting.set(branch.start(), CodeFormats.PARENTHESES);
@@ -216,13 +218,22 @@ public class GigaParser {
                 if (paragraph.get(nextChar.line, nextChar.pos) == ':') {
                     LinePos is2 = firstNonSpace(nextChar.next(paragraph.lineLength(nextChar.line)), leaf.end(), paragraph);
                     LinePos ie2 = endOfIdentifier(is2, leaf.end(), paragraph);
+                    final @Nonnull String namespace = paragraph.getRange(pos.line, pos.pos, ie1.pos);
+                    final @Nonnull String item = paragraph.getRange(is2.line, is2.pos, ie2.pos);
+                    boolean valid = ForgeRegistries.ITEMS.containsKey(new ResourceLocation(namespace, item));
                     formatting.setRange(pos.line, pos.pos, ie1.pos, CodeFormats.NAMESPACE);
                     formatting.set(nextChar.line, nextChar.pos, CodeFormats.NAMESPACE);
-                    formatting.setRange(is2.line, is2.pos, ie2.pos, CodeFormats.IDENTIFIER);
-                    return Predicate.item(paragraph.getRange(pos.line, pos.pos, ie1.pos), paragraph.getRange(is2.line, is2.pos, ie2.pos));
+                    formatting.setRange(is2.line, is2.pos, ie2.pos, valid ? CodeFormats.IDENTIFIER : CodeFormats.ERROR);
+                    if (!valid)
+                        return null;
+                    return Predicate.item(namespace, item);
                 } else {
-                    formatting.setRange(pos.line, pos.pos, ie1.pos, CodeFormats.IDENTIFIER);
-                    return Predicate.item(paragraph.getRange(pos.line, pos.pos, ie1.pos));
+                    final @Nonnull String item = paragraph.getRange(pos.line, pos.pos, ie1.pos);
+                    boolean valid = ForgeRegistries.ITEMS.containsKey(new ResourceLocation("minecraft", item));
+                    formatting.setRange(pos.line, pos.pos, ie1.pos, valid ? CodeFormats.IDENTIFIER : CodeFormats.ERROR);
+                    if (!valid)
+                        return null;
+                    return Predicate.item(item);
                 }
             }
         }

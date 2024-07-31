@@ -10,6 +10,9 @@ public class CodeFormats {
     public static final byte WILDCARD = 6;
     public static final byte NAMESPACE = 7;
     public static final byte IDENTIFIER = 8;
+    
+
+    public static final byte ERROR = -1;
 
     public static int colorOf(byte format) {
         switch (format) {
@@ -20,6 +23,9 @@ public class CodeFormats {
             case WILDCARD -> {return 0x00ff00;}
             case NAMESPACE -> {return 0x7789ff;}
             case IDENTIFIER -> {return 0xbfffea;}
+
+
+            case ERROR -> {return 0xff0000;}
             
             default -> {return 0xc3c6cb;}
         }
